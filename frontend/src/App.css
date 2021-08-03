@@ -1,0 +1,110 @@
+/* .App {
+  text-align: center;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+.profile-content{
+  width: 100%;
+  height: 50%;
+}
+.profile{
+  display: grid;
+  align-items: center;
+  justify-content:center;
+  border: 1px solid darkgray;
+  border-style: inset;
+  box-shadow: inset 2px 2px 5px 2px #babecc, inset -5px -5px 10px 10px #fff;
+}
+.profile h2{
+  margin-top: 5em;
+}
+.user_profile {
+  margin: 2em;
+  border-radius: .3em;
+  box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #fff;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+  position: relative;
+  height: 270px;
+  width: 450px;
+  background-color: #fff;
+  backdrop-filter: blur(30px);
+  border: 2px solid #ffffff1a;
+  overflow: hidden;
+  text-align: center;
+}
+.username{
+  font-size: 0.8rem;
+  left: 40px;
+  bottom: 212px;
+  position: absolute;
+}
+.name{
+  font-size: 0.8rem;
+  left: 41px;
+  bottom: 35px;
+  position: absolute;
+}
+.firstname{
+  bottom: 35px;
+  right: 21px;
+  position: absolute;
+}
+.email{
+  font-size: 0.8rem;
+  left: 185px;
+  bottom: 82px;
+  position: absolute;
+}
+.card{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  color: #000;
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-shadow: 0 0 2px rgb(0 0 0 / 60%);
+}
+.chip{
+  top: 50px;
+  left: -23px;
+  width: 50px;
+  height: auto;
+  opacity: 0.8;
+  position: absolute;
+}
+.avatar{
+  margin-left: 0.7em;
+  margin-top: 0.7em;
+  position: absolute;
+  top: 35px;
+  right: 40px;
+  width: 80px;
+  height: auto;
+  opacity: 0.8;
+  border-radius: 20em;
+}
+.update{
+  background-color: lightgreen;
+}
+.delete{
+  background-color: lightcoral;
+}
+button{
+  margin:auto;
+  margin-bottom: 1em;
+  border: 1px solid grey;
+  width: 8em;
+  height: 3em;
+}
+.role{
+  color: #e76043;
+  left: 40px;
+  bottom: 65px;
+  font-family: "Nunito", sans-serif;
+  position: absolute;
+  font-size: 0.8rem;
+} */

@@ -99,7 +99,8 @@ exports.likePost =  async function likePost(req, res){
   try {
     let post = { ...req.body };
     console.log(post);
-    await model.likePost(post);
+    await model.likePost(post.postId, post.userid, post.likes);
+    res.status(200).json({ message: "Like successfully !" });
   } catch (err) {
     console.log(err);
     res.status(400).json({ err });

@@ -1,0 +1,345 @@
+body{
+    margin: 0;
+    background-color: #ffffff;
+}
+.ppassword, .pparameters{
+    font-size: smaller;
+}
+#lateral-panel{
+    z-index: 9999;                  /* pour être au dessus des autres éléments */
+    position: fixed;                /* ne suit pas le scroll de la page et sert de réfèrent */
+    top: 0;                         /* position en haut */
+    left: 0;                        /* à gauche */
+    width: 20em;                    /* valeur de largeur pour tout le contenu */
+    min-height: 100vh;              /* occupe toute la hauteur du viewport */
+    transform: translateX(-100%);   /* on déplace à gauche pour ne pas interférer avec le document */
+   }
+   #lateral-panel-input {
+      position: absolute;           /* pour sortir l'élément du flux */
+      left: -999em;                 /* position hors de la fenêtre */
+    }
+    #lateral-panel-label {
+      z-index: 1;                   /* on le met au dessus */
+      position: absolute;           /* pour sortir l'élément du flux, il va bouger */
+      top: 0;                       /* position en haut */
+      left: 100%;                   /* alignement sur le bord droit du parent */
+      width: 3em;                   /* dimensions respectables */
+      height: 3em;
+      cursor: pointer;
+    }
+    #lateral-panel-bloc {
+      z-index: 0;                   /* mise au niveau zéro */
+      position: absolute;           /* pour sortir l'élément du flux, il va bouger */
+      top: 0;                       /* position en haut */  
+      left: 0;                      /* alignement sur bord gauche du parent */
+      box-sizing: border-box;       /* modèle de boîte, plus simple à gérer */
+      width: 100%;                  /* largeur 100% de son parent */
+      height: 100%;                 /* hauteur 100% de son parent */
+      padding: 1em;                 /* on décolle le contenu du bord */
+      overflow: auto;               /* rien ne doit déborder */
+    }
+    #lateral-panel-input:checked ~ #lateral-panel-label {
+      left: 200%;                     /* décalage vers la droite, passe de 100% à 200% */
+    }   
+    #lateral-panel-input:checked ~ #lateral-panel-bloc {
+      transform: translateX(100%);    /* translation vers la droite de 100% */
+    }
+    #lateral-panel-label,
+  #lateral-panel-bloc {
+    font-size: inherit;             /* taille font du référent */
+    background: #FFF;               /* il faut un fond opaque */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    transition: all .5s;
+  }
+  #lateral-panel-label:before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      box-sizing: border-box;
+      width: 1em;
+      height: 1em;
+      border: .5em solid currentColor;
+      border-width: .5em .5em 0 0;
+      color: #888;
+      transition: all .5s;
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+    #lateral-panel-input:checked ~ #lateral-panel-label:before {
+      transform: translate(-50%, -50%) rotate(-135deg);
+    }
+.container {
+    width: 100%;
+}
+.pprofile, .profile-content, .container, .puser_profile, p.container, #profile, #Post, .pusername, .pname, .pfirstname, .pemail, .prole, .pPosts, .pDescription, .pTitle, .pcontent, .pDate, .pLikes, .pbutton, .pimg{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.center-block{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: auto;
+}
+.pTitle, .pDescription{
+    width: 15em;
+    margin-top: 2em;
+    margin-bottom: 1em;
+    text-align: center;
+}
+.pprofile{
+    border: 1px solid #fc9484;
+}
+.pprofile{
+    margin-top: 1em;
+}
+.pusername, .prole, .ppassword, .pfonction, .pbutton{
+    grid-column: span 2;
+}
+.prole{
+    color: #e76043;
+    font-family: "Nunito", sans-serif;
+    font-size: 0.8rem;
+}
+.pimg{
+    border:2px solid white; 
+}
+
+.pupdate:hover{
+    background-color: rgb(152, 247, 152);
+}
+.pdelete:hover{
+    background-color: rgb(255, 133, 133);
+}
+
+.pupdate, .pdelete{
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-width: 0 10px;
+    border-radius: 0;
+    padding: 15px;
+    border: 1px solid grey;
+    cursor: pointer;
+}
+.pThumbsUp{
+    display: inline-block;
+    margin-left: 0.5em;
+    margin-bottom: 0.5em;
+    color: #f08080;
+    cursor: pointer;
+}
+#profile {
+    display: flex;
+    flex-direction: column;
+    margin:auto;
+    margin-top: 2em;
+    margin-bottom:2em;
+}
+    
+table tr td th { 
+    border:1px solid #fca793;
+    text-align:center;
+    box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #fff;
+}
+.pusername, .pname, .pfirstname, .pemail, .prole, .ppassword, .pfonction, .pcontainer, .pPosts, .pDescription, .pTitle, .pcontent, .pDate, .pLikes, .pbutton, .pimg{
+    margin: auto;
+    text-align:center;
+}
+
+@media(max-width:767px){
+    .container{
+        width: 100%;
+    }
+    .profile-content{
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: 1fr;
+    }
+    .pcontent, .responsive-components{
+        width: 20em;
+    }
+    #profile, .ml-2{
+        width: 21em;
+        height: 35em;
+        margin: 0;
+        justify-content: center;
+        align-items: center;
+        margin: 1.5em;
+    }
+    table{
+        width: 20em;
+        height: 20em;
+    }
+    .pudate, .pdelete{
+        width: 8em;
+        height: 3em;
+    }
+    .pimg{
+        width: 16em;
+    }
+    .container-xs, .row, .col, .card-group{
+        height: 30em;
+        width: 20em;
+    }
+    #Post{
+        width:18em;
+    }
+    .pusername, .pname, .pfirstname, .ppassword, .pemail, .prole, .pfonction{
+        font-size: 0.5rem;
+    }
+    .pusername, .pname, .pfirstname, .pemail, .prole, .pcontainer, .pPosts, .pDescription, .pTitle, .pcontent, .pDate, .pLikes, .pbutton, .pimg{
+        font-size: smaller;
+    }
+    .btn{
+        width: 8em;
+        height: 2.5em;
+    }
+    .pDate, .pThumbsUp{
+        width: 15em;
+    }
+    .card{
+        grid-column-start: 1;
+        grid-row-start: 2;
+        border-radius: 1rem;
+        padding-bottom: 1vh;
+        box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #fff;
+        margin-top: 2em; 
+        margin-bottom: 2em;
+        padding: 1em; 
+        border: 2px solid #f3f0f0;
+        margin: auto;
+        margin-top: 8em;
+        width: 25rem;
+    }
+}
+@media(min-width: 768px) and (max-width : 991px){
+    .pimg2{
+        max-width: 30%;
+    }
+    .pprofile{
+        margin: 0;
+        padding: 1em;
+        border: 0;
+    }
+    .pimg{
+        width: 20%;
+    }
+    /* .container{
+        max-width: 25em;
+        max-height: 25em;
+    } */
+    .table>:not(caption)>*>* {
+        padding: 0;
+    }
+    .pcontainer{
+        grid-template-columns: 100%;
+        grid-template-rows: auto;
+    }
+    .container, .pcontent, .responsive-components, .container-sm, .row, .col, .card-group, #profile, .table-responsive-sm, .puser_profile {
+        width:100%;
+        height: 60%;
+    }
+    .sm{
+        padding: 0;
+    }
+    .container{
+        display: grid;
+        grid-template-columns: 50% 50%;
+        grid-template-rows: 50% 50%;
+    }
+    .profile-content{
+        display: grid;
+        grid-template-columns: 92%;
+        grid-template-rows: auto;
+    }
+    #profile{
+        height: 30em;
+        justify-content: center;
+        align-items: center;
+        margin: 1.5em;
+    }
+    table{
+        width: 20em;
+        height: 20em;
+    }
+    .puser_profile{
+        width: 50%;
+        margin: auto;
+    }
+    .pimg{
+        width: 20%;
+    }
+    .pimg2{
+        width: 80%;
+        height: 60%;
+        margin: auto;
+    }
+    .pcontent{
+        height: 63%;
+        width: 70%;
+    }
+    .card{
+        grid-column-start: 1;
+        grid-row-start: 2;
+        border-radius: 1rem;
+        padding-bottom: 1vh;
+        box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #fff;
+        padding: 1em; 
+        border: 2px solid #f3f0f0;
+        margin-top: 8em;
+        width: 50%;
+        margin: 0;
+        margin-top: 11em;
+    }
+}
+@media(min-width:992px){
+    #profile{
+        height: 20em;
+        grid-row-start: 1;
+        grid-column: 1 / span2;
+        margin: auto;
+    }
+    .profile-content{
+        display: grid;
+        grid-template-columns: repeat(2,50%);
+    }
+    .pudate, .pdelete{
+        width: 8em;
+        height: 3em;
+        font-size: 16px;
+    }
+    .pimg{
+        width: 25%;
+    }
+    .pcontent, .responsive-content, .container-md, .row, .col, .card-group{
+        width: fit-content;
+    }
+    .pcontent{
+        height: 50%;
+    }
+    .pusername, .pname, .pfirstname, .ppassword, .pemail, .prole{
+        font-size: 0.8rem;
+    }
+    .pusername, .pname, .pfirstname, .pemail, .prole, .pcontainer, .pPosts, .pDescription, .pTitle, .pcontent, .pDate, .pLikes, .pbutton, .pimg, .pfonction{
+        font-size: large;
+        text-align: center;
+    }
+    .card{
+        grid-column-start: 1;
+        grid-row-start: 2;
+        border-radius: 1rem;
+        padding-bottom: 1vh;
+        box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #fff;
+        margin-top: 2em; 
+        margin-bottom: 2em;
+        padding: 1em; 
+        border: 2px solid #f3f0f0;
+        margin: auto;
+        margin-top: 8em;
+        width: 25rem;
+    }
+}

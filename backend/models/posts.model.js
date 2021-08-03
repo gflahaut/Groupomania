@@ -28,7 +28,7 @@ exports.createPost = async function createPost(newPost) {
 exports.getAllPost = async function getAllPost() {
   try {
     const query = await mysql.request(
-      "SELECT p.*,username FROM users u INNER JOIN posts p ON u.userId = p.postuserid;"
+      "SELECT p.*,username FROM users u INNER JOIN posts p ON u.userId = p.postuserid ORDER BY date DESC;"
     );
     if (query.length>0){
       return query;
@@ -42,7 +42,7 @@ exports.getAllPost = async function getAllPost() {
 exports.getPostsFromUser = async function getPostsFromUser(userid) {
   try {
     const query = await mysql.request(
-      "SELECT * FROM posts WHERE postuserid = ?;", [userid]
+      "SELECT * FROM posts WHERE postuserid = ? ORDER BY date DESC;", [userid]
     );
     console.log(query);
     return query;
@@ -54,7 +54,7 @@ exports.getPostsFromUser = async function getPostsFromUser(userid) {
 
 exports.getOnePost = async function getOnePost(userid) {
   try{
-  const query = mysql.request("SELECT * FROM posts WHERE id = ?", [userid]
+  const query = mysql.request("SELECT * FROM posts WHERE postuserid = ? ORDER BY date DESC LIMIT 1;", [userid]
   );
     return query;
   } catch (err) {
@@ -68,14 +68,15 @@ exports.modifyPost = async function modifyPost(post) {
     let params = [];
     let optionalModifs = "";
     if(post.postTitle.length > 0){
-      optionalModifs += "title = ?";
+      optionalModifs += "title = ?,";
       params.push(post.postTitle);
     }
     if(post.postDesc.length > 0){
-      optionalModifs += ", description = ?";
+      optionalModifs += "description = ?";
       params.push(post.postDesc);
     }
     params.push(post.postId);
+    console.log(params);
     const query = mysql.request(
       "UPDATE posts SET "+optionalModifs+" WHERE idposts = ?", params
     );
@@ -91,19 +92,40 @@ exports.deletePost = async function deletePost(post) {
       const query = mysql.request("DELETE FROM posts WHERE idposts = ?",[post.postId]
       );
         return query;
-      } catch (err) {
-        console.log(err);
-        throw err;
-      }
+    } catch (err) {
+      console.log(err);
+      throw err;
+    }
 };
 
-exports.likePost = async function likePost(userid) {
-  try{
-    const query = mysql.request(
-      "UPDATE posts SET likes = likes + 1 WHERE id = ?",[userid]);
-  return query;
-  } catch (err) {
-    console.log(err);
-    throw err;
+exports.likePost = async function likePost(post, user, likes) {
+  let action = likes.includes(user);
+  if(!action){
+    likes = likes.split(",");
+    likes.push(user);
+    likes = likes.join(",");
+    try{
+      const query = mysql.request("UPDATE posts SET likes = ? WHERE idposts = ?", [likes, post]);
+      return query;
+
+    }catch(err){
+      throw err;
+    }
+  }else{
+    likes = likes.split(",");
+    likes.splice(likes.indexOf(user), 1);
+    likes = likes.join(",");
+    try{
+      const query = mysql.request("UPDATE posts SET likes = ? WHERE idposts = ?", [likes, post]);
+      return query;
+
+    }catch(err) {
+      throw err;
+    }
   }
 };
+
+
+
+
+

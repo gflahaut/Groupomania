@@ -1,0 +1,207 @@
+body{
+    margin: 0;
+    background-color: #F2F2F2;
+}
+
+input[type="hidden" i] .hidPost, input[type="hidden" i] .hidAuthor {
+    display: none;
+    appearance: none;
+    margin: 0;
+    width: 0;
+}
+
+.hPosts, .hDescription, .hTitle, .hDate, .hLikes, .himg{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    flex-direction: column;
+}
+.hcontainer, .hPosts,  .hDate, .hLikes, .himg, .hDescription, .hTitle, .hDate, .hLikes{
+    margin: auto;
+}
+.hcontainer, .hPosts,  .hDate, .hLikes, .himg{
+    font-size: small;
+}
+.hDescription{
+    font-size: x-small
+}
+.hTitle{
+    font-size: large;
+    margin-top: 2em;
+    margin-bottom: 1em;
+    text-align: center;
+}
+.hPosts{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    border-radius: 1rem;
+    padding-bottom: 1vh;
+    box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #fff;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    padding: 1em;
+    border: 2px solid #f3f0f0;
+}
+.hcontainer{
+    display: grid;
+    border-radius: 1rem;
+    column-gap: 0.5em;
+    row-gap: 0.5em;
+}
+.h {
+    list-style-type: none;
+}
+.hTitle{
+    margin: 0;
+    display: block;
+}
+.hAuthor{
+    text-align: right;
+}
+
+.hDate{
+    margin: 0;
+    display: block;
+}
+.hLikes{
+    display: inline-block;
+    margin: 0px;
+    text-align: right;
+    cursor: pointer;
+}
+
+.thumbsUp{
+    display: inline-block;
+    margin-left: 0.5em;
+    color: #f08080;
+}
+
+.thumbsUpLiked{
+    display: inline-block;
+    margin-left: 0.5em;
+    color: #e74444;
+}
+
+.hTitle{
+    grid-column-start: 1;
+    grid-row-start: 1;
+    grid-column: span 2;
+}
+.hImage{
+    grid-column-start: 2;
+    grid-row-start: 2;
+    grid-column: span 3;
+}
+.hAuthor{
+    grid-column-start: 3;
+    grid-row-start: 1;
+}
+.hDescription{
+    grid-column-start: 1;
+    grid-row-start: 3;
+    grid-column: span 3;
+}
+.hDate{
+    grid-column-start: 1;
+    grid-row-start: 4;
+}
+.hLikes{
+    grid-column-start: 3;
+    grid-row-start: 4;
+}
+
+.hfilters{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2em;
+    font-size: 8px;
+}
+
+#hfilter{
+    box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #fff;
+    border-radius: 2em;
+    width: 20em;
+    padding-left: 1em;
+    margin-left: 0.5em;
+    outline: none;
+}
+
+.userHolder{
+    display: flex;
+    margin: auto;
+    margin-top: 0.75em;
+    font-size: 8px;
+    flex-direction: column;
+    width: 15em;
+}
+
+.userHolder div{
+    text-align: center;
+    padding: 0.5em;
+    cursor: pointer;
+    border-bottom: 1px solid #222;
+}
+
+.userHolder div:hover{
+    border-bottom: 1px solid #f08080;
+}
+
+.dispN{
+    display: none;
+}
+
+.clearFilters{
+    margin-top: 0.5em;
+    cursor: pointer;
+}
+
+@media(max-width:767px){
+    
+    .himg{
+        max-width: 80%;
+    }
+    .hPosts{
+        max-width: 25em;
+        max-height: 25em;
+    }
+    .hcontainer{
+        grid-template-columns: 100%;
+        grid-template-rows: auto;
+    }
+
+}
+@media(min-width: 768px) and (max-width : 991px){
+    .himg{
+        max-width: 80%;
+    }
+    .hPosts{
+        max-width: 25em;
+        max-height: 25em;
+    }
+    .hcontainer{
+        grid-template-columns: 100%;
+        grid-template-rows: auto;
+    }
+
+}
+@media(min-width:992px){
+    .hDescription{
+        max-width: 20em;
+    }
+    .hTitle{
+        max-width: 15em;
+    }
+    .hPosts{
+        max-width: 30em;
+        max-height: 30em;
+    }
+    .hcontainer{
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+    }
+    .himg{
+        max-width: 100%;
+    }
+}

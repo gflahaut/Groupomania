@@ -20,10 +20,11 @@ exports.login = async (req, res, next) => {
     let user = { ...req.body };
     console.log('userCtrl', user);
     let result = await model.compareUser(user);
+    console.log('userCtrl', result);
     if (result.code == 1 || result.code == 2){
       res.status(201).json({ message: result.message, result:false });
     }else{
-      res.status(201).json({ message: "Connected successfully !", result:true, userid: result.userid, token: result.token, username: result.username});
+      res.status(201).json({ message: "Connected successfully !", result:true, userid: result.userid, username: result.username, token: result.token});
     }
   } catch (error) {
     console.log(error);
@@ -40,6 +41,19 @@ exports.getInfos = async (req, res, next) => {
   } catch (error) {
     console.log(error);
     res.status(201).json({ message: "Infos retrieval Failed !", result:false });
+  }
+};
+
+exports.getRole = async (req, res, next) => {
+  try {
+    let params = { ...req.body };
+    console.log('userCtrl', params);
+    let result = await model.getRole(params.userid);
+    console.log('userCtrl', result)
+    res.status(201).json(result);
+  } catch (error) {
+    console.log(error);
+    res.status(201).json({ message: "Role retrieval Failed !", result:false });
   }
 };
 

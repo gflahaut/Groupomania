@@ -15,7 +15,7 @@ exports.createUser = async function createUser(newUser) {
         newUser.password,
         newUser.name,
         newUser.firstname,
-        newUser.email,
+        newUser.email = firstname.charAt(0)+newUser.name+'@groupomania.com',
       ]
     );
   } catch (error) {
@@ -44,6 +44,7 @@ exports.compareUser = async function compareUser(user) {
       return {
         userid: query[0].userId,
         token : token,
+        username: query[0].username
       };
     }else{
       return ({ code : 2, message :" Wrong Password ! "});
@@ -62,11 +63,26 @@ exports.getInfos = async function getInfos(userid) {
       "SELECT * FROM users WHERE userid = ?;", [userid]
     );
     if (query.length > 0){
-      // console.log("HERE");
       return (query);
     }else{
-      // console.log("HERE 2")
       return ({ code : 1, message : " Found no users matching your search !"})
+    }
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+};
+
+exports.getRole = async function getRole(userid) {
+  console.log(userid);
+  try {
+    const query = await mysql.request(
+      "SELECT role FROM users WHERE userid = ?;", [userid]
+    );
+    if (query.length > 0){
+      return (query);
+    }else{
+      return ({ code : 1, message : " Found no user matching this id !"})
     }
   } catch (error) {
     console.log(error);

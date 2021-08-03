@@ -12,7 +12,6 @@ const fs = require('fs');
 //App Routes 
 const userRoutes = require("./routes/user.routes");
 const postRoutes = require("./routes/post.routes");
-const profileRoutes = require("./routes/profile.routes");
 //const auth = require("./config/auth");
 
 
@@ -30,18 +29,13 @@ function assignId (req, res, next) {
 }
 
 app.use(assignId);
-
+app.use(cors());
 
 //CORS Control Headers 
-app.use(cors({
-    origin: process.env.ORIGIN,
-  })
-);
 app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Origin", process.env.ORIGIN);
   res.setHeader("Access-Control-Allow-Headers","Origin, X-Requested-With, Content, Accept, Content-Type, Authorization");
-  res.setHeader("Access-Control-Allow-Methods","GET, POST, PUT, DELETE, PATCH, OPTIONS");
-  res.setHeader("Access-Control-Allow-Credentials", false);
+  res.setHeader("Access-Control-Allow-Methods","GET, POST, PUT, DELETE");
   next();
 });
 
@@ -68,9 +62,7 @@ app.use(nocache());
 
 
 //Access Routes 
-// app.use("/profile", profileRoutes);
 app.use("/auth", userRoutes);
-app.use("/profile", profileRoutes);
 app.use("/posts", postRoutes);
 app.use("/img", express.static(path.join(__dirname, "img")));
 
