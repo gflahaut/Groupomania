@@ -1,0 +1,21 @@
+.Navbar{
+    width: 100%;
+    background-color: lightcoral;
+    -webkit-box-shadow: 0 0 15px rgba(0,0,0,0.6);
+    -moz-box-shadow: 0 0 15px rgba(0,0,0,0.6);
+    box-shadow: 0 0 15px rgba(0,0,0,0.6);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    color: white;
+}
+.Navbar a {
+    font-size: 12px;
+    margin: 10px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: white;
+    text-decoration: none;
+}
+.Navbar a:hover {
+    cursor: pointer;
+}
