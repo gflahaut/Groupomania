@@ -49,6 +49,10 @@ Dans le dossier `/frontend` démarrez `npm install` pour installer toutes les d�
 
 Démarrer `npm start` pour avoir accès au serveur de développement. L'application va se recharger automatiquement si vous modifiez un fichier source.
 
+## DataBase
+Au sein de la racine du projet vous trouverez le fichier config.json mais aussi le fichier sociamedia.sql qui permet la connexion et l'insertion de toutes les données.
+
+
 ## Droits Admin
 
 Sur la page de Login: entrer les inforations suivantes : 
