@@ -1,0 +1,39 @@
+{
+  "database": {
+    "global": {
+      "1627487324279": {
+        "host": "127.0.0.1",
+        "port": "3306",
+        "user": "admin",
+        "password": "azerty",
+        "timezone": "+00:00",
+        "ssh": {
+          "host": "",
+          "privateKeyPath": "",
+          "port": 22,
+          "username": "root",
+          "type": "password",
+          "watingTime": 5000,
+          "algorithms": {
+            "cipher": []
+          },
+          "tunnelPort": null
+        },
+        "usingSSH": false,
+        "esAuth": "none",
+        "encoding": "utf8",
+        "showHidden": false,
+        "global": true,
+        "dbType": "MySQL",
+        "connectionUrl": "",
+        "encrypt": true,
+        "dbPath": "",
+        "authType": "default",
+        "includeDatabases": null,
+        "database": "socialmedia",
+        "name": "socialmediadb"
+      }
+    }
+  },
+  "nosql": {}
+}
