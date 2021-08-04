@@ -1,10 +1,11 @@
 const mariadb = require("mariadb");
 
 const pool = mariadb.createPool({
-  host: process.env.HOST,
-  user: process.env.USER,
-  password: process.env.PASSWORD,
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
   database: process.env.DATABASE,
+  connectionLimit: process.env.DB_LIMIT
 });
 
 async function request(sql, data) {
@@ -17,7 +18,7 @@ async function request(sql, data) {
   } catch (err) {
     throw err;
   } finally {
-    if (connexion) connexion.release(); //release to db
+    if (connexion) connexion.release(); 
   }
 }
 
