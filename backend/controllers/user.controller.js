@@ -5,7 +5,7 @@ const model = require("../models/user.model");
 
 exports.signup = async (req, res, next) => {
   try {
-    let newUser = { ...req.body };
+    let newUser = req.body;
     console.log('userCtrl', newUser);
     await model.createUser(newUser);
     res.status(201).json({ message: "User created !" });
@@ -24,7 +24,7 @@ exports.login = async (req, res, next) => {
     if (result.code == 1 || result.code == 2){
       res.status(201).json({ message: result.message, result:false });
     }else{
-      res.status(201).json({ message: "Connected successfully !", result:true, userid: result.userid, username: result.username, token: result.token});
+      res.status(201).json({ message: "Connected successfully !", result:true, ...result});
     }
   } catch (error) {
     console.log(error);
@@ -74,11 +74,10 @@ exports.getUsersFromSearch = async (req, res, next) => {
 };
 
 
-exports.deleteUser = async (req, res, next) => {
+exports.deleteUser = async function deleteUser (req, res){
   try {
-    let User = { ...req.params.id };
-    console.log('userCtrl',User);
-    // let result = await model.deletePost(User);
+    let user = req.params.id ;
+    await model.deleteUser(user);
     res.status(200).json({ message: "User Delete successfully !" });
   } catch (err) {
     console.log(err);

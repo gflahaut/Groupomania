@@ -14,11 +14,18 @@ function formatDate(timestamp){
 exports.createPost = async function createPost(req, res){
   try {
     let newPost = { ...req.body };
-    // for (let i = 0; i <newPost.length; i++) {
-    //   // newPosts[i].date = formatDate(newPosts[i].date);
-    // }
+    if (!newPost.title) {
+      throw "Title Not Found !"
+    } else if (!newPost.description) {
+      throw"Description Not Found !"
+    } else if (!newPost.postUserId) {
+     throw "You are not allowed to post !"
+    }
     console.log("Ctrl.createPost");
-    await model.createPost(newPost);
+    const createdPost = await model.createPost(req,newPost);
+    if(!createdPost){
+      throw error;
+    }
     res.status(201).json({ message: "Post created successfully !" });
     return newPost;
   } catch (err) {
@@ -85,7 +92,7 @@ exports.modifyPost = async function modifyPost (req, res){
 
 exports.deletePost = async function deletePost (req, res){
   try {
-    let post = { ...req.body };
+    let post = req.params.id ;
     console.log(post);
     await model.deletePost(post);
     res.status(200).json({ message: "Post Delete successfully !" });
