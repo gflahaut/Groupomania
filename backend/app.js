@@ -12,13 +12,12 @@ const fs = require('fs');
 //App Routes 
 const userRoutes = require("./routes/user.routes");
 const postRoutes = require("./routes/post.routes");
-//const auth = require("./config/auth");
 
 
 morgan.token('id', function (req,res) {
-  return req.id
+  return (
+    req.headers.id, req.id)
 });
-
 
 // Initialize express App
 const app = express();
@@ -29,21 +28,26 @@ function assignId (req, res, next) {
 }
 
 app.use(assignId);
-app.use(cors());
+app.use(morgan(':id :method :url :response-time :remote-user'));
+
 
 //CORS Control Headers 
+app.use(cors());
+
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", process.env.ORIGIN);
-  res.setHeader("Access-Control-Allow-Headers","Origin, X-Requested-With, Content, Accept, Content-Type, Authorization");
-  res.setHeader("Access-Control-Allow-Methods","GET, POST, PUT, DELETE");
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content, Accept, Content-Type, Authorization"
+  );
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
   next();
 });
+
 
 //Express Parser Middleware 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
-app.use(morgan(':id :method :url :status :remote-user'));
 
 
 // log only 4xx and 5xx responses to console
@@ -62,6 +66,7 @@ app.use(nocache());
 
 
 //Access Routes 
+// app.use("/profile", profileRoutes);
 app.use("/auth", userRoutes);
 app.use("/posts", postRoutes);
 app.use("/img", express.static(path.join(__dirname, "img")));
