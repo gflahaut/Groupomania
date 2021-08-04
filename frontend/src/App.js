@@ -1,58 +1,27 @@
-import React, { Component, useEffect, useState } from "react";
-import "./App.css";
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Redirect,
-} from "react-router-dom";
-import Home from "./pages/Home/Home";
-import Register from "./pages/Register/Register";
-import Login from "./pages/Login/Login";
-import Post from "./pages/Post/Post";
-import Profile from "./pages/Profile/Profile";
-import Navbar from "./components/Navbar";
-import Logout from "./pages/Login/Logout";
-import axios from "axios";
-//import { useHistory } from 'react-router-dom';
+import React from "react";
+import './App.css';
+import {BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import Home from "./components/Home/Home";
+import Register from "./components/Register/Register";
+import Login from "./components/Login/Login";
+import Post from "./components/Post/Post";
+import Profile from "./components/Profile/Profile";
 
-class App extends React.Component {
-  isLoggedIn() {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; token=`);
-
-    return parts.length === 2;
-  }
-
-  render() {
-    // const isLoggedIn = this.isLoggedIn();
-
-    return (
-      <Router>
-        <Navbar />
-        <Switch>
-          <Route exact path="/login">
-            {isLoggedIn ? <Redirect to="/" /> : <Login />}
-          </Route>
-          <Route exact path="/register">
-            {isLoggedIn ? <Redirect to="/" /> : <Register />}
-          </Route>
-          <Route exact path="/logout">
-            {isLoggedIn ? <Logout /> : <Redirect to="/login" />}
-          </Route>
-          <Route path="/">
-            {isLoggedIn ? <Home /> : <Redirect to="/login" />}
-          </Route>
-          <Route exact path="/post">
-            {isLoggedIn ? <Post /> : <Redirect to="/login" />}
-          </Route>
-          <Route exact path="/profile">
-            {isLoggedIn ? <Profile /> : <Redirect to="/login" />}
-          </Route>
-        </Switch>
-      </Router>
-    );
-  }
+function App() {
+   
+  return (
+    <>
+    <Router>
+      <Switch>
+      <Route path="/" exact render={() => <Home/>} />
+      <Route path="/login" exact render={() => <Login/> }/>
+      <Route path="/register" exact render={() => <Register/>} />
+      <Route path="/post" exact render={()=> <Post/>} />
+      <Route path="/profile" exact render={()=> <Profile/>} />
+      </Switch>
+    </Router>
+    </>
+  )
 }
 
 export default App;

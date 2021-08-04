@@ -1,0 +1,250 @@
+body{
+    margin: 0;
+    background-color: #F2F2F2;
+}
+.profile_content{
+    width: 100%;
+    height: 50%;
+}
+input[type="hidden" i] {
+    display: none;
+    appearance: none;
+    margin: 0;
+    width: 0;
+}
+input{
+    box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #fff;
+    border-radius: 2em;
+}
+input.Title, input.Description{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 15em;
+    margin-top: 2em;
+    margin-bottom: 1em;
+}
+.title{
+    text-align: center;
+}
+.Profile_Buttons_{
+    margin: auto;
+}
+.profile{
+    display: grid;
+    align-items: center;
+    justify-content:center;
+    border: 1px solid darkgray;
+    border-style: inset;
+    box-shadow: inset 2px 2px 5px 2px #babecc, inset -5px -5px 10px 10px #fff;
+}
+.profile h2{
+    margin-top: 5em;
+}
+.user_profile {
+    margin: 2em;
+    border-radius: .3em;
+    box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #fff;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    position: relative;
+    height: 270px;
+    width: 450px;
+    background-color: #fff;
+    backdrop-filter: blur(30px);
+    border: 2px solid #ffffff1a;
+    overflow: hidden;
+    text-align: center;
+}
+.username{
+    font-size: 0.8rem;
+    left: 40px;
+    bottom: 212px;
+    position: absolute;
+}
+.name{
+    font-size: 0.8rem;
+    left: 41px;
+    bottom: 35px;
+    position: absolute;
+}
+.firstname{
+    bottom: 35px;
+    right: 21px;
+    position: absolute;
+}
+.email{
+    font-size: 0.8rem;
+    left: 185px;
+    bottom: 82px;
+    position: absolute;
+}
+.card{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    color: #000;
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-shadow: 0 0 2px rgb(0 0 0 / 60%);
+}
+.chip{
+    top: 50px;
+    left: 10px;
+    width: 50px;
+    height: auto;
+    opacity: 0.8;
+    position: absolute;
+}
+.avatar{
+    margin-left: 0.7em;
+    margin-top: 0.7em;
+    position: absolute;
+    top: 35px;
+    right: 40px;
+    width: 80px;
+    height: auto;
+    opacity: 0.8;
+    border-radius: 20em;
+}
+.username, .name, .firstname, .email, .role, .Posts, .Description, .Title, .content, .Date, .Likes, button, img{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    flex-direction: column;
+}
+.username, .name, .firstname, .email, .role, .container, .Posts, .Description, .Title, .content, .Date, .Likes, button, img{
+    margin: auto;
+    font-size: large;
+}
+.username, .role, button{
+    grid-column: span 2;
+}
+.role{
+    color: #e76043;
+    left: 40px;
+    bottom: 65px;
+    font-family: "Nunito", sans-serif;
+    position: absolute;
+    font-size: 0.8rem;
+}
+.Posts{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    width: 30em;
+    height: 30em;
+    border-radius: 1rem;
+    padding-bottom: 1vh;
+    box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #fff;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    padding: 1em;
+    border: 2px solid #f3f0f0;
+}
+.container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    column-gap: 0.5em;
+    row-gap: 0.5em;
+    border-radius: 1rem;
+}
+
+img{
+    width: 100%;
+}
+.update{
+    grid-column-start: 1;
+    grid-row-start: 5;
+    background-color: lightgreen;
+    color: black;
+}
+.delete{
+    grid-column-start: 3;
+    grid-row-start: 5;
+    background-color: lightcoral;
+    color: white;
+}
+
+.update:hover{
+    background-color: rgb(152, 247, 152);
+}
+.delete:hover{
+    background-color: rgb(255, 133, 133);
+}
+
+.update, .delete{
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-width: 0 10px;
+    border-radius: 0;
+    padding: 15px;
+    border: 1px solid grey;
+    width: 8em;
+    height: 3em;
+    cursor: pointer;
+}
+
+li {
+    list-style-type: none;
+}
+
+.Image{
+    grid-column-start: 2;
+    grid-row-start: 2;
+    grid-column: span 3;
+}
+.Title{
+    grid-column-start: 1;
+    grid-row-start: 1;
+    grid-column: span 2;
+    margin: 0;
+    display: block;
+}
+.Title div[contenteditable="true"]{
+    border: 1px solid black;
+}
+
+.Description{
+    grid-column-start: 1;
+    grid-row-start: 3;
+    grid-column: span 3;
+}
+
+.Description div[contenteditable="true"]{
+    border: 1px solid black;
+}
+
+.Date{
+    grid-column-start: 1;
+    grid-row-start: 4;
+    margin: 0;
+    display: block;
+}
+.Likes{
+    grid-column-start: 3;
+    grid-row-start: 4;
+    display: inline-block;
+    margin: 0px;
+    text-align: right;
+}
+
+.Buttons .update{
+    grid-column-start: 1;
+    grid-row-start: 5;
+}
+
+.Buttons .delete{
+    grid-column-start: 3;
+    grid-row-start: 5;
+}
+
+.thumbsUp{
+    display: inline-block;
+    margin-left: 0.5em;
+    color: #f08080;
+    cursor: pointer;
+}
